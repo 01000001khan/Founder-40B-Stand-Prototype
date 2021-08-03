@@ -41,13 +41,6 @@
     <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; bottom: 16px; right: 16px; ">View in AR</button>
     
   </model-viewer>
-  
-  
-  <br>
-  <br>
-  <model-viewer id="test" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate environment-image="neutral" src="assets/defiancex15.glb"></model-viewer>
-  <br>
-  <br>
 
 
   <script>
@@ -86,48 +79,9 @@
       material.pbrMetallicRoughness.setRoughnessFactor(0.0);
     }
     //NOTE TO SELF: Specular is assumed 1.0 by defalt.  Specular does not exist.  Simply controlled by roughness
-    /*
-    console.log(finishName);
-    if (finishName === "WoodTest"){
-      console.log("Wood");
-      material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI("/AR-Testing/assets/textures/wood.jpg");
-    }
-    else
-    {
-      console.log("Not wood");
-      //material['baseColorTexture'].setTexture("/assets/textures/wood.jpg"); 
-      let material = modelViewerObject.model.materials[6];
-      //VERY IMPORTANT LINE.  TURNS OFF WOOD
-      material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI("/AR-Testing/assets/textures/blank.jpg");
-    }*/
-    
   }
 
-
-  
-  /*
-  document.querySelector('#color-controls').addEventListener('click', (event) => {//this works for buttons
-    const colorString = event.target.dataset.color;
-
-    if (!colorString) {
-      return;
-    }
-
-    const color = colorString.split(',')
-        .map(numberString => parseFloat(numberString));
-
-    console.log('Changing color to: ', color);
-    const [material] = modelViewerColor.model.materials;
-    material.pbrMetallicRoughness.setBaseColorFactor(color);
-  };*/
-
-    
   </script>
-
-
-  
-  <!--<model-viewer src="assets/40B.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate></model-viewer>-->
-  <!-- 40B speaker-->
   
 </body>
 </html>
