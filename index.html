@@ -19,10 +19,12 @@
   <model-viewer id="speaker" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate environment-image="neutral" src="assets\founder40bStandPrototype.glb">
 
     <select class="controls" ,="" id="color-controls" onchange="updateCol();" >
-      <option value="/AR-Testing/assets/textures/blackWalnut.jpg" selected="selected">Black Walnut</option>
-      <option value="/AR-Testing/assets/textures/redCherry.jpg">Red Cherry</option>
+      <option value="/Founder-Series/assets/textures/blackWalnut.jpg">Black Walnut</option>
+      <option value="/Founder-Series/assets/textures/darkCherry.jpg">Dark Cherry</option>
+      <option value="/Founder-Series/assets/textures/walnut.jpg" selected="selected">Walnut</option>
+      <option value="/Founder-Series/assets/textures/blank.jpg">Piano Black</option>
     </select>
-    
+      
     
     <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; bottom: 16px; right: 16px; ">View in AR</button>
     
@@ -33,38 +35,110 @@
     
   //called on change in colour selection list
   function updateCol(){
-    const modelViewerObject = document.getElementById("speaker");
-
-    const colorString = document.getElementById("color-controls").value;
     
+
+
+    let speakers = document.querySelectorAll("#speaker")
+
+    speakers.forEach(function(speaker){
+      
+      //let colorString = document.getElementById("color-controls").value;
+      let colorString = "1,1,1";
  
-    if (!colorString) {
-      return;
-    }
+      if (!colorString) {
+        return;
+      }
 
-    const color = colorString.split(',')
-        .map(numberString => parseFloat(numberString));
+      const color = colorString.split(',')
+          .map(numberString => parseFloat(numberString));
 
-    console.log('Changing color to: ', color);
-    
-    
-    let material = modelViewerObject.model.materials[6];
-    //material.pbrMetallicRoughness.setBaseColorFactor(color);
-    
-    
-    //var finishName = document.getElementById('color-controls').text;
-    var e = document.getElementById("color-controls");
-    var finishName = e.options[e.selectedIndex].text;
-    
-    material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI(e.value);
+      //console.log('Changing color to: ', color);
 
-    if (finishName === "Black Walnut"){
-      material.pbrMetallicRoughness.setRoughnessFactor(0.926);
-    }
-    else if (finishName === "Red Cherry"){
-      material.pbrMetallicRoughness.setRoughnessFactor(0.0);
-    }
-    //NOTE TO SELF: Specular is assumed 1.0 by defalt.  Specular does not exist.  Simply controlled by roughness
+      
+      let material = speaker.model.materials[0];
+      material.pbrMetallicRoughness.setBaseColorFactor(color);
+      
+      //Get current text value (name) of selected option
+      var e = document.getElementById("color-controls");
+      var finishName = e.options[e.selectedIndex].text;
+      
+      material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI(e.value);
+
+      if (finishName === "Black Walnut"){
+        material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+      }
+      else if (finishName === "Dark Cherry"){
+        material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+        material.pbrMetallicRoughness.setMetallicFactor(0.0);
+
+        // let colorString = "1,1,1";
+
+        // if (!colorString) {
+        //   return;
+        // }
+
+        // const color = colorString.split(',')
+        //     .map(numberString => parseFloat(numberString));
+
+        // material.pbrMetallicRoughness.setBaseColorFactor(color);
+      }
+      else if (finishName === "Walnut")
+      {
+        material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+        material.pbrMetallicRoughness.setMetallicFactor(0.1);
+      }
+      else if (finishName === "Piano Black")
+      {
+        material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+
+        let colorString = "0,0,0";
+
+        if (!colorString) {
+          return;
+        }
+
+        const color = colorString.split(',')
+            .map(numberString => parseFloat(numberString));
+
+        material.pbrMetallicRoughness.setBaseColorFactor(color);
+
+      }
+      else if (finishName === "Non-existent Debugging Material")
+      {
+        material.pbrMetallicRoughness.setRoughnessFactor(0.5);
+        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+
+        // let colorString = "0.5,0.5,0.5";
+
+        // if (!colorString) {
+        //   return;
+        // }
+
+        // const color = colorString.split(',')
+        //     .map(numberString => parseFloat(numberString));
+
+        // material.pbrMetallicRoughness.setBaseColorFactor(color);
+      }
+      else if (finishName === "Experimental Material")
+      {
+        material.pbrMetallicRoughness.setRoughnessFactor(0.5);
+        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+                
+        let colorString = "0.5,0.5,0.5";
+
+        if (!colorString) {
+          return;
+        }
+
+        const color = colorString.split(',')
+            .map(numberString => parseFloat(numberString));
+
+        material.pbrMetallicRoughness.setBaseColorFactor(color);
+
+      }
+    })
   }
 
   </script>
