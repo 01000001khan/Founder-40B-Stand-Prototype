@@ -16,13 +16,13 @@
 </head>
 <body style="background-color:rgb(0, 20, 50);">
 
-  <model-viewer id="speaker" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate environment-image="neutral" src="assets\founder40bStandPrototype.glb">
+  <model-viewer id="speaker" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate environment-image="neutral" src="https://01000001khan.github.io/Founder-40B-Stand-Prototype/assets/founder40bStandPrototype.glb">
 
-    <select class="controls" ,="" id="color-controls" onchange="updateCol();" >
-      <option value="/Founder-40B-Stand-Prototype/assets/textures/blackWalnut.jpg">Black Walnut</option>
-      <option value="/Founder-40B-Stand-Prototype/assets/textures/darkCherry.jpg">Dark Cherry</option>
-      <option value="/Founder-40B-Stand-Prototype/assets/textures/walnut.jpg" selected="selected">Walnut</option>
-      <option value="/Founder-40B-Stand-Prototype/assets/textures/blank.jpg">Piano Black</option>
+    <select class="controls" ,="" id="color-controls" >
+      <option value="https://01000001khan.github.io/Founder-40B-Stand-Prototype/assets/textures/blackWalnut.jpg">Black Walnut</option>
+      <option value="https://01000001khan.github.io/Founder-40B-Stand-Prototype/assets/textures/darkCherry.jpg">Dark Cherry</option>
+      <option value="https://01000001khan.github.io/Founder-40B-Stand-Prototype/assets/textures/walnut.jpg" selected="selected">Walnut</option>
+      <option value="https://01000001khan.github.io/Founder-40B-Stand-Prototype/assets/textures/blank.jpg">Piano Black</option>
     </select>
       
     
@@ -33,114 +33,169 @@
 
   <script>
     
-  //called on change in colour selection list
-  function updateCol(){
+  // //called on change in colour selection list
+  // function updateCol(){
     
 
 
-    let speakers = document.querySelectorAll("#speaker")
+  //   let speakers = document.querySelectorAll("#speaker")
 
-    speakers.forEach(function(speaker){
+  //   speakers.forEach(function(speaker){
       
-      //let colorString = document.getElementById("color-controls").value;
-      let colorString = "1,1,1";
+  //     //let colorString = document.getElementById("color-controls").value;
+  //     let colorString = "1,1,1";
  
-      if (!colorString) {
-        return;
-      }
+  //     if (!colorString) {
+  //       return;
+  //     }
 
-      const color = colorString.split(',')
-          .map(numberString => parseFloat(numberString));
+  //     const color = colorString.split(',')
+  //         .map(numberString => parseFloat(numberString));
 
-      //console.log('Changing color to: ', color);
+  //     //console.log('Changing color to: ', color);
 
       
-      let material = speaker.model.materials[0];
-      material.pbrMetallicRoughness.setBaseColorFactor(color);
+  //     let material = speaker.model.materials[0];
+  //     material.pbrMetallicRoughness.setBaseColorFactor(color);
       
-      //Get current text value (name) of selected option
-      var e = document.getElementById("color-controls");
-      var finishName = e.options[e.selectedIndex].text;
+  //     //Get current text value (name) of selected option
+  //     var e = document.getElementById("color-controls");
+  //     var finishName = e.options[e.selectedIndex].text;
       
-      material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI(e.value);
+  //     material.pbrMetallicRoughness['baseColorTexture'].texture.source.setURI(e.value);
 
-      if (finishName === "Black Walnut"){
-        material.pbrMetallicRoughness.setRoughnessFactor(0.8);
-        material.pbrMetallicRoughness.setMetallicFactor(1.0);
-      }
-      else if (finishName === "Dark Cherry"){
-        material.pbrMetallicRoughness.setRoughnessFactor(0.0);
-        material.pbrMetallicRoughness.setMetallicFactor(0.0);
+  //     if (finishName === "Black Walnut"){
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+  //       material.pbrMetallicRoughness.setMetallicFactor(1.0);
+  //     }
+  //     else if (finishName === "Dark Cherry"){
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+  //       material.pbrMetallicRoughness.setMetallicFactor(0.0);
 
-        // let colorString = "1,1,1";
+  //       // let colorString = "1,1,1";
 
-        // if (!colorString) {
-        //   return;
-        // }
+  //       // if (!colorString) {
+  //       //   return;
+  //       // }
 
-        // const color = colorString.split(',')
-        //     .map(numberString => parseFloat(numberString));
+  //       // const color = colorString.split(',')
+  //       //     .map(numberString => parseFloat(numberString));
 
-        // material.pbrMetallicRoughness.setBaseColorFactor(color);
-      }
-      else if (finishName === "Walnut")
-      {
-        material.pbrMetallicRoughness.setRoughnessFactor(0.8);
-        material.pbrMetallicRoughness.setMetallicFactor(0.1);
-      }
-      else if (finishName === "Piano Black")
-      {
-        material.pbrMetallicRoughness.setRoughnessFactor(0.0);
-        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+  //       // material.pbrMetallicRoughness.setBaseColorFactor(color);
+  //     }
+  //     else if (finishName === "Walnut")
+  //     {
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+  //       material.pbrMetallicRoughness.setMetallicFactor(0.1);
+  //     }
+  //     else if (finishName === "Piano Black")
+  //     {
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+  //       material.pbrMetallicRoughness.setMetallicFactor(1.0);
 
-        let colorString = "0,0,0";
+  //       let colorString = "0,0,0";
 
-        if (!colorString) {
-          return;
-        }
+  //       if (!colorString) {
+  //         return;
+  //       }
 
-        const color = colorString.split(',')
-            .map(numberString => parseFloat(numberString));
+  //       const color = colorString.split(',')
+  //           .map(numberString => parseFloat(numberString));
 
-        material.pbrMetallicRoughness.setBaseColorFactor(color);
+  //       material.pbrMetallicRoughness.setBaseColorFactor(color);
 
-      }
-      else if (finishName === "Non-existent Debugging Material")
-      {
-        material.pbrMetallicRoughness.setRoughnessFactor(0.5);
-        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+  //     }
+  //     else if (finishName === "Non-existent Debugging Material")
+  //     {
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.5);
+  //       material.pbrMetallicRoughness.setMetallicFactor(1.0);
 
-        // let colorString = "0.5,0.5,0.5";
+  //       // let colorString = "0.5,0.5,0.5";
 
-        // if (!colorString) {
-        //   return;
-        // }
+  //       // if (!colorString) {
+  //       //   return;
+  //       // }
 
-        // const color = colorString.split(',')
-        //     .map(numberString => parseFloat(numberString));
+  //       // const color = colorString.split(',')
+  //       //     .map(numberString => parseFloat(numberString));
 
-        // material.pbrMetallicRoughness.setBaseColorFactor(color);
-      }
-      else if (finishName === "Experimental Material")
-      {
-        material.pbrMetallicRoughness.setRoughnessFactor(0.5);
-        material.pbrMetallicRoughness.setMetallicFactor(1.0);
+  //       // material.pbrMetallicRoughness.setBaseColorFactor(color);
+  //     }
+  //     else if (finishName === "Experimental Material")
+  //     {
+  //       material.pbrMetallicRoughness.setRoughnessFactor(0.5);
+  //       material.pbrMetallicRoughness.setMetallicFactor(1.0);
                 
-        let colorString = "0.5,0.5,0.5";
+  //       let colorString = "0.5,0.5,0.5";
 
-        if (!colorString) {
-          return;
-        }
+  //       if (!colorString) {
+  //         return;
+  //       }
 
-        const color = colorString.split(',')
-            .map(numberString => parseFloat(numberString));
+  //       const color = colorString.split(',')
+  //           .map(numberString => parseFloat(numberString));
 
-        material.pbrMetallicRoughness.setBaseColorFactor(color);
+  //       material.pbrMetallicRoughness.setBaseColorFactor(color);
 
+  //     }
+  //   })
+  // }
+
+  const speakers = document.querySelectorAll("#speaker");
+    const speaker = document.querySelector("#speaker");      
+    const colorSelector = document.querySelector('#color-controls');    
+  
+    speaker.addEventListener("load", () => {
+  
+      const createAndApplyTexture = async (channel, event) => {
+        const texture = await speaker.createTexture(colorSelector.value);
+        
+        speakers.forEach(function(speaker){
+          const material = speaker.model.materials[0];
+          material.pbrMetallicRoughness[channel].setTexture(texture);
+          
+          
+          var finishName = colorSelector.options[colorSelector.selectedIndex].text;
+          if (finishName === "Black Walnut"){
+            material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+            material.pbrMetallicRoughness.setMetallicFactor(1.0);
+          }
+          else if (finishName === "Dark Cherry"){
+            material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+            material.pbrMetallicRoughness.setMetallicFactor(0.0);
+          }
+          else if (finishName === "Walnut")
+          {
+            material.pbrMetallicRoughness.setRoughnessFactor(0.8);
+            material.pbrMetallicRoughness.setMetallicFactor(0.1);
+          }
+          else if (finishName === "Piano Black")
+          {
+            material.pbrMetallicRoughness.setRoughnessFactor(0.0);
+            material.pbrMetallicRoughness.setMetallicFactor(1.0);
+          }
+          else if (finishName === "Non-existent Testing Material")
+          {
+            material.pbrMetallicRoughness.setRoughnessFactor(0.5);
+            material.pbrMetallicRoughness.setMetallicFactor(1.0);
+          }      
+        });
+  
       }
-    })
-  }
-
+  
+        
+      document.querySelector('#color-controls').addEventListener('input', (event) => {
+        createAndApplyTexture('baseColorTexture', event);
+      });
+  
+      speakers.forEach(function(speaker){
+        speaker.addEventListener('load', (event) => {
+          createAndApplyTexture('baseColorTexture', event);
+        });
+      });
+  
+      
+    });
   </script>
   
 </body>
